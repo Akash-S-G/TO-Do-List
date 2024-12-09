@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>To-DO-List <img src="icons8-notes-80.png"></h1>
+        <div class="input">
+            <input type="text">
+            <button onclick="creatediv()">ADD</button>
+        </div>
+
+        <div class="tasks">
+            <ul>
+                <!-- <li class="Unchecked">Task 1</li> -->
+                <!-- <li>Task 1</li>
+            <li>Task 1</li> -->
+            </ul>
+        </div>
+
+
+    </div>
+    <script>
+        let UL = document.querySelector('ul');
+        function creatediv() {
+            let newDiv = document.createElement("li");
+            newDiv.className = "Unchecked";
+            let inputdata = document.querySelector('.input input');
+            if(inputdata.value == "")
+        {
+             alert("Input feild is empty")
+             return;
+        }
+           
+
+            newDiv.textContent = inputdata.value;
+            UL.appendChild(newDiv);
+            inputdata.value = "";
+            let closeButton = document.createElement("span");
+            closeButton.className = "close-button";
+            closeButton.textContent = "✖";
+            newDiv.appendChild(closeButton);
+
+            closeButton.addEventListener('click', function () {
+                newDiv.remove();
+            });
+            toggle = 1;
+            newDiv.addEventListener('click', function () {
+                    if(toggle)
+                   {
+                     newDiv.className = 'checked '
+                     toggle = 0;
+                   }
+                   else{
+                    
+                    newDiv.className = 'Unchecked'
+                    toggle = 1;
+                   }
+
+                    // Toggle the 'checked' class
+                    
+                });
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
